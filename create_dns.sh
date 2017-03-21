@@ -2,7 +2,7 @@
 #
 # Build for interactive use, i. e. set PATH accordingly if run via cron
 #
-# Usage: create_dns.sh as206946.net 198.19 2a07:a907:50c:f
+# Usage: create_dns.sh int.4830.org 10.234 2a06:e881:1705:0
 #
 # Requires: sipcalc
 
@@ -35,17 +35,20 @@ do
   ./tun-ip.sh $LHTMPNAME:$RHTMPNAME > /tmp/$$.tmp
   IP4="`grep </tmp/$$.tmp IPv4: | cut -d ' ' -f 2`"
   IP6="`grep </tmp/$$.tmp IPv6: | cut -d ' ' -f 2 | sed -e 's%/64%%g'`"
-  echo "${LHS}-${RHS} IN A ${IP4}" >> ${domain}.inc
-  echo "${LHS}-${RHS} IN AAAA ${IP6}" >> ${domain}.inc
-  echo "${IP4}" | awk -v tunnel="${LHS}-${RHS}.${domain}" '{split($1, addr, "."); printf("%s.%s.%s.%s.in-addr.arpa. IN PTR %s.\n", addr[4], addr[3], addr[2], addr[1], tunnel);}' >> ${rev4domain}.inc
-  sipcalc -r "${IP6}" | grep ip6.arpa | tail -1 | awk '{f=split($1, addr, "."); for(i=1; i<19; i++) printf("%s.", addr[i]); printf("%s\n", addr[i]);}' | awk -v tunnel="${LHS}-${RHS}.${domain}" '{printf("%s IN PTR %s.\n", $1, tunnel);}' >> ${rev6domain}.inc
+  echo "${LHS} IN A ${IP4}" >> ${domain}.inc
+  echo "${LHS} IN AAAA ${IP6}" >> ${domain}.inc
+  echo "${IP4}" | awk -v tunnel="${LHS}.${domain}" '{split($1, addr, "."); printf("%s.%s.%s.%s.in-addr.arpa. IN PTR %s.\n", addr[4], addr[3], addr[2], addr[1], tunnel);}' >> ${rev4domain}.inc
+  sipcalc -r "${IP6}" | grep ip6.arpa | tail -1 | awk '{f=split($1, addr, "."); for(i=1; i<19; i++) printf("%s.", addr[i]); printf("%s\n", addr[i]);}' | awk -v tunnel="${LHS}.${domain}" '{printf("%s IN PTR %s.\n", $1, tunnel);}' >> ${rev6domain}.inc
 
   ./tun-ip.sh $RHTMPNAME:$LHTMPNAME > /tmp/$$.tmp
   IP4="`grep </tmp/$$.tmp IPv4: | cut -d ' ' -f 2`"
   IP6="`grep </tmp/$$.tmp IPv6: | cut -d ' ' -f 2 | sed -e 's%/64%%g'`"
-  echo "${RHS}-${LHS} IN A ${IP4}" >> ${domain}.inc
-  echo "${RHS}-${LHS} IN AAAA ${IP6}" >> ${domain}.inc
-  echo "${IP4}" | awk -v tunnel="${RHS}-${LHS}.${domain}" '{split($1, addr, "."); printf("%s.%s.%s.%s.in-addr.arpa. IN PTR %s.\n", addr[4], addr[3], addr[2], addr[1], tunnel);}' >> ${rev4domain}.inc
-  sipcalc -r "${IP6}" | grep ip6.arpa | tail -1 | awk '{f=split($1, addr, "."); for(i=1; i<19; i++) printf("%s.", addr[i]); printf("%s\n", addr[i]);}' | awk -v tunnel="${RHS}-${LHS}.${domain}" '{printf("%s IN PTR %s.\n", $1, tunnel);}' >> ${rev6domain}.inc
+  echo "${RHS} IN A ${IP4}" >> ${domain}.inc
+  echo "${RHS} IN AAAA ${IP6}" >> ${domain}.inc
+  echo "${IP4}" | awk -v tunnel="${RHS}.${domain}" '{split($1, addr, "."); printf("%s.%s.%s.%s.in-addr.arpa. IN PTR %s.\n", addr[4], addr[3], addr[2], addr[1], tunnel);}' >> ${rev4domain}.inc
+  sipcalc -r "${IP6}" | grep ip6.arpa | tail -1 | awk '{f=split($1, addr, "."); for(i=1; i<19; i++) printf("%s.", addr[i]); printf("%s\n", addr[i]);}' | awk -v tunnel="${RHS}.${domain}" '{printf("%s IN PTR %s.\n", $1, tunnel);}' >> ${rev6domain}.inc
 done
+sort -o ${domain}.inc ${domain}.inc
+sort -o ${rev4domain}.inc ${rev4domain}.inc
+sort -o ${rev6domain}.inc ${rev6domain}.inc
 rm /tmp/$$.tmp

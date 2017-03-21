@@ -4,5 +4,5 @@ bgp-fks01
 bgp-fks02
 gw10
 gw11
-ge12
+gw12
 gw13
