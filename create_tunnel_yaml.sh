@@ -28,37 +28,32 @@ export LANG
 # de3-us1 l2tp
 # de3-gut1 ovpn
 
-for i in `sed -e 's/ /;/g' <as206946-tunnel.txt | grep ${uname}`
+for i in `sed -e 's/ /;/g' <as206813-tunnel.txt | grep ${uname}`
 do
   linkspec="`echo $i | cut -d ";" -f 1`"
   TYPE="`echo $i | cut -d ";" -f 2`"
-  LHS="`echo ${linkspec} | awk '{split($1, lp, "-"); print lp[1];}'`"
-  RHS="`echo ${linkspec} | awk '{split($1, lp, "-"); print lp[2];}'`"
-  LHTMPNAME="`echo ${linkspec} | cut -d " " -f 1 | sed -f ./as206946-tunnel-mapping.sed | awk '{split($1, lp, "-"); print lp[1];}'`"
-  RHTMPNAME="`echo ${linkspec} | cut -d " " -f 1 | sed -f ./as206946-tunnel-mapping.sed | awk '{split($1, lp, "-"); print lp[2];}'`"
-  domain="dn42.uu.org"
-  tunprefix="uu"
-  echo "$LHS" | grep bgp 2>&1 >/dev/null && domain="4830.org"
-  if [ "$domain" == "4830.org" ]; then tunprefix="ffgt"; fi
+  LHS="`echo ${linkspec} | awk '{split($1, lp, ":"); print lp[1];}'`"
+  RHS="`echo ${linkspec} | awk '{split($1, lp, ":"); print lp[2];}'`"
+  LHTMPNAME="`echo ${linkspec} | cut -d " " -f 1 | sed -f ./as206946-tunnel-mapping.sed | awk '{split($1, lp, ":"); print lp[1];}'`"
+  RHTMPNAME="`echo ${linkspec} | cut -d " " -f 1 | sed -f ./as206946-tunnel-mapping.sed | awk '{split($1, lp, ":"); print lp[2];}'`"
+  domain="4830.org"
+  tunprefix="ffgt"
   LHSIP="`host ${LHS}.${domain} | awk '/has address/ {print $NF;}'`"
-  domain="dn42.uu.org"
-  echo "$RHS" | grep bgp 2>&1 >/dev/null && domain="4830.org"
-  if [ "$domain" == "4830.org" ]; then tunprefix="ffgt"; fi
   RHSIP="`host ${RHS}.${domain} | awk '/has address/ {print $NF;}'`"
   if [ "$LHS" = "$uname" ]; then
     echo "${tunprefix}-${RHS}:"
     echo "  pub4src: \"$LHSIP\""
     echo "  pub4dst: \"$RHSIP\""
-    ./tun-ip.sh $LHTMPNAME-$RHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "src:", $1); printf("  %s \"%s\"\n", $1, $2);}'
-    ./tun-ip.sh $RHTMPNAME-$LHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "dst:", $1); printf("  %s \"%s\"\n", $1, $2);}'
+    ./tun-ip.sh $LHTMPNAME:$RHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "src:", $1); printf("  %s \"%s\"\n", $1, $2);}'
+    ./tun-ip.sh $RHTMPNAME:$LHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "dst:", $1); printf("  %s \"%s\"\n", $1, $2);}'
     echo "  mode: \"${TYPE}\""
   else
     echo "${tunprefix}-${LHS}:"
     echo "  pub4src: \"$RHSIP\""
     echo "  pub4dst: \"$LHSIP\""
-    ./tun-ip.sh $LHTMPNAME-$RHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "dst:", $1); printf("  %s \"%s\"\n", $1, $2);}'
-    ./tun-ip.sh $RHTMPNAME-$LHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "src:", $1); printf("  %s \"%s\"\n", $1, $2);}'
+    ./tun-ip.sh $LHTMPNAME:$RHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "dst:", $1); printf("  %s \"%s\"\n", $1, $2);}'
+    ./tun-ip.sh $RHTMPNAME:$LHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "src:", $1); printf("  %s \"%s\"\n", $1, $2);}'
     echo "  mode: \"${TYPE}\""
   fi
   echo
-done | sed -e 's%/64%%g'> dn42-tunnel.yaml
+done | sed -e 's%/64%%g'> tunnel.yaml

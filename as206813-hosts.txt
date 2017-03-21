@@ -1,0 +1,8 @@
+bgp-gut01
+bgp-gut02
+bgp-fks01
+bgp-fks02
+gw10
+gw11
+ge12
+gw13

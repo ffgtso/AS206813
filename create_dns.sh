@@ -26,13 +26,13 @@ cat /dev/null >${domain}.inc
 cat /dev/null >${rev4domain}.inc
 cat /dev/null >${rev6domain}.inc
 
-for i in `cat as206946-tunnel.txt|cut -d ' ' -f 1`
+for i in `cat as206813-tunnel.txt|cut -d ' ' -f 1`
 do
-  LHS="`echo $i | awk '{split($1, lp, "-"); print lp[1];}'`"
-  RHS="`echo $i | awk '{split($1, lp, "-"); print lp[2];}'`"
-  LHTMPNAME="`echo $i | sed -f ./as206946-tunnel-mapping.sed | awk '{split($1, lp, "-"); print lp[1];}'`"
-  RHTMPNAME="`echo $i | sed -f ./as206946-tunnel-mapping.sed | awk '{split($1, lp, "-"); print lp[2];}'`"
-  ./tun-ip.sh $LHTMPNAME-$RHTMPNAME > /tmp/$$.tmp
+  LHS="`echo $i | awk '{split($1, lp, ":"); print lp[1];}'`"
+  RHS="`echo $i | awk '{split($1, lp, ":"); print lp[2];}'`"
+  LHTMPNAME="`echo $i | sed -f ./as206813-tunnel-mapping.sed | awk '{split($1, lp, ":"); print lp[1];}'`"
+  RHTMPNAME="`echo $i | sed -f ./as206813-tunnel-mapping.sed | awk '{split($1, lp, ":"); print lp[2];}'`"
+  ./tun-ip.sh $LHTMPNAME:$RHTMPNAME > /tmp/$$.tmp
   IP4="`grep </tmp/$$.tmp IPv4: | cut -d ' ' -f 2`"
   IP6="`grep </tmp/$$.tmp IPv6: | cut -d ' ' -f 2 | sed -e 's%/64%%g'`"
   echo "${LHS}-${RHS} IN A ${IP4}" >> ${domain}.inc
@@ -40,7 +40,7 @@ do
   echo "${IP4}" | awk -v tunnel="${LHS}-${RHS}.${domain}" '{split($1, addr, "."); printf("%s.%s.%s.%s.in-addr.arpa. IN PTR %s.\n", addr[4], addr[3], addr[2], addr[1], tunnel);}' >> ${rev4domain}.inc
   sipcalc -r "${IP6}" | grep ip6.arpa | tail -1 | awk '{f=split($1, addr, "."); for(i=1; i<19; i++) printf("%s.", addr[i]); printf("%s\n", addr[i]);}' | awk -v tunnel="${LHS}-${RHS}.${domain}" '{printf("%s IN PTR %s.\n", $1, tunnel);}' >> ${rev6domain}.inc
 
-  ./tun-ip.sh $RHTMPNAME-$LHTMPNAME > /tmp/$$.tmp
+  ./tun-ip.sh $RHTMPNAME:$LHTMPNAME > /tmp/$$.tmp
   IP4="`grep </tmp/$$.tmp IPv4: | cut -d ' ' -f 2`"
   IP6="`grep </tmp/$$.tmp IPv6: | cut -d ' ' -f 2 | sed -e 's%/64%%g'`"
   echo "${RHS}-${LHS} IN A ${IP4}" >> ${domain}.inc
