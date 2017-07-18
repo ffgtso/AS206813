@@ -6,3 +6,7 @@ gw10
 gw11
 gw12
 gw13
+s2
+gw02
+gw04
+bgp-ber01
