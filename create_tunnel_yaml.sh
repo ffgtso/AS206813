@@ -34,21 +34,23 @@ do
   TYPE="`echo $i | cut -d ";" -f 2`"
   LHS="`echo ${linkspec} | awk '{split($1, lp, ":"); print lp[1];}'`"
   RHS="`echo ${linkspec} | awk '{split($1, lp, ":"); print lp[2];}'`"
+  LHSshort="`echo ${linkspec} | awk '{gsub("-", "", $1); split($1, lp, ":"); print lp[1];}'`"
+  RHSshort="`echo ${linkspec} | awk '{gsub("-", "", $1); split($1, lp, ":"); print lp[2];}'`"
   LHTMPNAME="`echo ${linkspec} | cut -d " " -f 1 | sed -f ./as206813-tunnel-mapping.sed | awk '{split($1, lp, ":"); print lp[1];}'`"
   RHTMPNAME="`echo ${linkspec} | cut -d " " -f 1 | sed -f ./as206813-tunnel-mapping.sed | awk '{split($1, lp, ":"); print lp[2];}'`"
   domain="4830.org"
-  tunprefix="ffgt"
+  tunprefix="T"
   LHSIP="`host ${LHS}.${domain} | awk '/has address/ {print $NF;}'`"
   RHSIP="`host ${RHS}.${domain} | awk '/has address/ {print $NF;}'`"
   if [ "$LHS" = "$uname" ]; then
-    echo "${tunprefix}-${RHS}:"
+    echo "${tunprefix}${RHSshort}:"
     echo "  pub4src: \"$LHSIP\""
     echo "  pub4dst: \"$RHSIP\""
     ./tun-ip.sh $LHTMPNAME:$RHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "src:", $1); printf("  %s \"%s\"\n", $1, $2);}'
     ./tun-ip.sh $RHTMPNAME:$LHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "dst:", $1); printf("  %s \"%s\"\n", $1, $2);}'
     echo "  mode: \"${TYPE}\""
   else
-    echo "${tunprefix}-${LHS}:"
+    echo "${tunprefix}${LHSshort}:"
     echo "  pub4src: \"$RHSIP\""
     echo "  pub4dst: \"$LHSIP\""
     ./tun-ip.sh $LHTMPNAME:$RHTMPNAME | awk '{gsub("IP", "ip", $1); gsub(":", "dst:", $1); printf("  %s \"%s\"\n", $1, $2);}'
