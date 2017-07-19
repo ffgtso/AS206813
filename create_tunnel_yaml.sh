@@ -40,6 +40,9 @@ do
   RHTMPNAME="`echo ${linkspec} | cut -d " " -f 1 | sed -f ./as206813-tunnel-mapping.sed | awk '{split($1, lp, ":"); print lp[2];}'`"
   domain="4830.org"
   tunprefix="T"
+  if [ "${TYPE}" = "l2tp-eth" ]; then
+    tunprefix="E"
+  fi
   LHSIP="`host ${LHS}.${domain} | awk '/has address/ {print $NF;}'`"
   RHSIP="`host ${RHS}.${domain} | awk '/has address/ {print $NF;}'`"
   if [ "$LHS" = "$uname" ]; then
