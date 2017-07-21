@@ -5,3 +5,4 @@ bgp-fks02:icvpn-fks l2tp
 icvpn-gut:icvpn-fks l2tp
 gw10:s3 l2tp-eth
 gw10:gw02 l2tp-eth
+gw10:gw04 l2tp-eth
