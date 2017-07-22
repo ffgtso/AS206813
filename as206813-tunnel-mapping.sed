@@ -6,3 +6,4 @@ s/icvpn-gut/bgp5/g
 s/icvpn-fks/bgp6/g
 s/de3/xx00/g
 s/de0/xx10/g
+s/bgp-ber01/bgp7/g
