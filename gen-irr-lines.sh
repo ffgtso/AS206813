@@ -63,7 +63,7 @@ NF==6 {
 END {
   printf("remarks: ---8<--- IRR data\n");
   if(upstreams>0) {
-    printf("remarks: +---------------\nremarks: | Upstreams\nremarks: +---------------\n");
+    printf("remarks: +---------\nremarks: | Transit\nremarks: +---------\n");
     for(i=1; i<=upstreams; i++) {
       lnks[upstr_peer[i]]++;
       if(lnks[upstr_peer[i]]==1) {
@@ -73,7 +73,7 @@ END {
     }
   }
   if(downstreams>0) {
-    printf("remarks: +---------------\nremarks: | Downstreams\nremarks: +---------------\n");
+    printf("remarks: +------------\nremarks: | Downstream\nremarks: +------------\n");
     for(i=1; i<=downstreams; i++) {
       lnks[dnstr_peer[i]]++;
       if(lnks[dnstr_peer[i]]==1) {
@@ -83,7 +83,7 @@ END {
     }
   }
   if(peers>0) {
-    printf("remarks: +---------------\nremarks: | Peerings\nremarks: +---------------\n");
+    printf("remarks: +----------\nremarks: | Peerings\nremarks: +----------\n");
     for(i=1; i<=peers; i++) {
       lnks[peer_peer[i]]++;
       if(lnks[peer_peer[i]]==1) {
