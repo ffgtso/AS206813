@@ -11,3 +11,4 @@ gw02
 gw04
 bgp-ber01
 gw00
+bgp-ham01
