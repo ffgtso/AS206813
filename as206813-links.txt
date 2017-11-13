@@ -3,7 +3,7 @@ bgp-gut02:icvpn-gut l2tp
 bgp-fks01:icvpn-fks l2tp
 bgp-fks02:icvpn-fks l2tp
 icvpn-gut:icvpn-fks l2tp
-gw10:s3 l2tp-eth
+gw10:s3 l2tp
 gw10:gw02 l2tp-eth
 gw10:gw04 l2tp-eth
 gw10a:gw10 l2tp-eth
@@ -12,6 +12,6 @@ gw10c:gw10 l2tp-eth
 gw10a:gw10b l2tp-eth
 gw10a:gw10c l2tp-eth
 gw10b:gw10c l2tp-eth
-gw10a:s3 l2tp-eth
-gw10b:s3 l2tp-eth
-gw10c:s3 l2tp-eth
+gw10a:s3 l2tp
+gw10b:s3 l2tp
+gw10c:s3 l2tp
