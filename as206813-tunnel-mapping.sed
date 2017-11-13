@@ -7,6 +7,6 @@ s/icvpn-fks/bgp6/g
 s/de3/xx00/g
 s/de0/xx10/g
 s/bgp-ber01/bgp7/g
-s/gw10a/x01/g
-s/gw10b/x02/g
-s/gw10c/x03/g
+s/gw10a/xx01/g
+s/gw10b/xx02/g
+s/gw10c/xx03/g
