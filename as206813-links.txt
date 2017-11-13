@@ -15,3 +15,15 @@ gw10b:gw10c l2tp-eth
 gw10a:s3 l2tp
 gw10b:s3 l2tp
 gw10c:s3 l2tp
+gw10a:gw00 l2tp-eth
+gw10b:gw00 l2tp-eth
+gw10c:gw00 l2tp-eth
+gw10a:gw11 l2tp-eth
+gw10a:gw12 l2tp-eth
+gw10a:gw13 l2tp-eth
+gw10b:gw11 l2tp-eth
+gw10b:gw12 l2tp-eth
+gw10b:gw13 l2tp-eth
+gw10c:gw11 l2tp-eth
+gw10c:gw12 l2tp-eth
+gw10c:gw13 l2tp-eth
