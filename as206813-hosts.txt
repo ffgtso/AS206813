@@ -14,3 +14,4 @@ bgp-ham01
 gw10a
 gw10b
 gw10c
+s3
