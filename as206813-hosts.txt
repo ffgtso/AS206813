@@ -15,3 +15,5 @@ gw10a
 gw10b
 gw10c
 s3
+gw01
+gw03
