@@ -12,9 +12,9 @@ awk < as${ASN}-hosts.txt >/tmp/tunnel-$$.tmp '{host[++num]=$1;} END {for(i=1; i<
 cat /tmp/tunnel-$$.tmp | awk -v ASN=${ASN} 'BEGIN {numlinks=0; linksfile=sprintf("as%s-links.txt", ASN); while((getline line <linksfile) > 0) {n=split(line, fields); if(n==2) {print line; split(fields[1], peers, ":"); link[numlinks++]=sprintf("%s:%s", peers[1], peers[2]); link[numlinks++]=sprintf("%s:%s", peers[2], peers[1]);}} /* printf("# %d links read from %s\n", numlinks, linksfile); */} {lnk=$1; tpe=$2; found=0; for(i=0; i<numlinks && found==0; i++) {if(lnk==link[i]) {found=1; /* printf("%s matches %s\n", lnk, link[i]); */}} if(found==0) {printf("%s\n", $0);}}' | sort -u >as${ASN}-tunnel.txt
 MYNAME="$(uname -n)"
 if [ "$(printf %.3s ${MYNAME})" == "bgp" ]; then
- (grep ${MYNAME} <as206813-tunnel.txt | grep -v gw ; grep $(uname -n) <as206813-tunnel.txt | grep bgp-gut) >/tmp/as206813-tunnel.txt
+ (grep ${MYNAME} <as206813-tunnel.txt | grep -v gw) >/tmp/as206813-tunnel.txt
 else
- (grep ${MYNAME} <as206813-tunnel.txt | grep -v bgp ; grep $(uname -n) <as206813-tunnel.txt | grep bgp-gut) >/tmp/as206813-tunnel.txt
+ (grep ${MYNAME} <as206813-tunnel.txt | grep -v bgp) <as206813-tunnel.txt | grep bgp-gut) >/tmp/as206813-tunnel.txt
 fi
 mv /tmp/as206813-tunnel.txt .
 rm /tmp/tunnel-$$.tmp
