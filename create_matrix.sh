@@ -14,7 +14,7 @@ MYNAME="$(uname -n)"
 if [ "$(printf %.3s ${MYNAME})" == "bgp" ]; then
  (grep ${MYNAME} <as206813-tunnel.txt | grep -v gw) >/tmp/as206813-tunnel.txt
 else
- (grep ${MYNAME} <as206813-tunnel.txt | grep -v bgp) <as206813-tunnel.txt | grep bgp-gut) >/tmp/as206813-tunnel.txt
+ (grep ${MYNAME} <as206813-tunnel.txt | grep -v bgp) >/tmp/as206813-tunnel.txt
 fi
 mv /tmp/as206813-tunnel.txt .
 rm /tmp/tunnel-$$.tmp
