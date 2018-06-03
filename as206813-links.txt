@@ -2,17 +2,3 @@ bgp-gut01:icvpn-gut lan
 bgp-gut02:icvpn-gut lan
 bgp-fks01:icvpn-fks lan
 icvpn-gut:icvpn-fks l2tp-ll
-bgp-gut01:gw10 lan
-bgp-gut01:gw11 lan
-bgp-gut01:gw12 lan
-bgp-gut01:gw13 lan
-bgp-gut01:gw02 lan
-bgp-gut01:gw04 lan
-bgp-gut01:gw00 lan
-bgp-gut01:gw10a lan
-bgp-gut01:gw10b lan
-bgp-gut01:gw10c lan
-bgp-gut01:gw01 lan
-bgp-gut01:gw03 lan
-bgp-gut01:gw05 lan
-bgp-gut01:gw06 lan
