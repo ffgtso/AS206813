@@ -1,5 +1,4 @@
 bgp-gut01:icvpn-gut l2tp-ll
 bgp-gut02:icvpn-gut l2tp-ll
 bgp-fks01:icvpn-fks l2tp-ll
-bgp-fks02:icvpn-fks l2tp-ll
 icvpn-gut:icvpn-fks l2tp-ll
