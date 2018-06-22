@@ -10,3 +10,4 @@ s/bgp-ber01/bgp7/g
 s/gw10a/xx01/g
 s/gw10b/xx02/g
 s/gw10c/xx03/g
+s/bgp-fra01/bgp8/g

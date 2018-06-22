@@ -106,7 +106,7 @@ do
     fi
     LHSTUNNAME="$LHSshort"
   fi
-  LHSIP="`host ${LHS}.${domain} | awk '/has address/ {print $NF;}'`"
+  LHSIP="`host ${LHS}.${domain} | grep -v 193.34.79 | awk '/has address/ {print $NF;}'`"
   LHS6IP="`host ${LHS}.${domain} | awk '/has IPv6 address/ {print $NF;}'`"
 
   domain="${dnssuffix}"
@@ -120,7 +120,7 @@ do
     fi
   RHSTUNNAME="$RHSshort"
   fi
-  RHSIP="`host ${RHS}.${domain} | awk '/has address/ {print $NF;}'`"
+  RHSIP="`host ${RHS}.${domain} | grep -v 193.34.79 | awk '/has address/ {print $NF;}'`"
   RHS6IP="`host ${RHS}.${domain} | awk '/has IPv6 address/ {print $NF;}'`"
 
   if [ "$LHS" = "$uname" ]; then
