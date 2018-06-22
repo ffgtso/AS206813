@@ -14,6 +14,9 @@ MYNAME="$(uname -n)"
 if [ "${MYNAME}" = "blackstar" ]; then
   MYNAME="bgp-ber01"
 fi
+if [ "${MYNAME}" = "brick" ]; then
+  MYNAME="bgp-fra01"
+fi
 if [ "$(printf %.3s ${MYNAME})" == "bgp" ]; then
  (grep ${MYNAME} <as206813-tunnel.txt | grep -v gw) >/tmp/as206813-tunnel.txt
 else
