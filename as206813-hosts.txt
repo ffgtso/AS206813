@@ -20,3 +20,4 @@ gw03
 gw05
 gw06
 bgp-fra01
+bgp-ham02
