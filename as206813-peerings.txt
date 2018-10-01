@@ -1,6 +1,8 @@
 # my-as peer-AS in out my-host tag
 206813 49745 ANY AS-FFGT bgp-gut01 upstream
 206813 206740 AS206740 AS-FFGT bgp-gut01 peering
+206813 44194 AS44194 AS-FFGT bgp-ber01 peering
+206813 206313 AS-FFNW AS-FFGT bgp-ber01 peering
 206813 6724 ANY AS-FFGT bgp-ber01 upstream
 206813 9002 ANY AS-FFGT bgp-ber01 upstream
 206813 25291 ANY AS-FFGT bgp-ber01 upstream
