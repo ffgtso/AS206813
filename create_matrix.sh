@@ -17,6 +17,9 @@ fi
 if [ "${MYNAME}" = "brick" ]; then
   MYNAME="bgp-fra01"
 fi
+if [ "${MYNAME}" = "chimaera" ]; then
+  MYNAME="bgp-ham02"
+fi
 if [ "$(printf %.3s ${MYNAME})" == "bgp" ]; then
  (grep ${MYNAME} <as206813-tunnel.txt | grep -v gw) >/tmp/as206813-tunnel.txt
 else

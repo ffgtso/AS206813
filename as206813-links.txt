@@ -6,10 +6,10 @@ de0:bgp-gut01 lan
 de0:bgp-gut02 lan
 de1:bgp-gut01 lan
 de1:bgp-gut02 lan
-de2:bgp-ber01 l2tp-wg
+de2:bgp-ber01 l2tp-ll
 de2:bgp-ham01 lan
-de2:bgp-ham02 l2tp-wg
+de2:bgp-ham02 l2tp-ll
 de3:bgp-fks01 lan
 de5:bgp-fra01 lan
-nl0:bgp-ber01 l2tp-wg
-nl0:bgp-ham02 l2tp-wg
+nl0:bgp-ber01 l2tp-ll
+nl0:bgp-ham02 l2tp-ll
