@@ -98,6 +98,7 @@ do
   domain="${dnssuffix}"
   LHSTUNNAME="$LHS"
   echo "$LHS" | grep bgp 2>&1 >/dev/null && domain="4830.org"
+  echo "$LHS" | grep '^[a-z][a-z][0-9]$' 2>&1 >/dev/null && domain="dn42.uu.org"
   if [ "$domain" == "4830.org" ]; then tunprefix="ffgt-"; fi
   if [ $legacy -eq 0 ]; then
     tunprefix="T"
@@ -112,6 +113,7 @@ do
   domain="${dnssuffix}"
   RHSTUNNAME="$RHS"
   echo "$RHS" | grep bgp 2>&1 >/dev/null && domain="4830.org"
+  echo "$RHS" | grep '^[a-z][a-z][0-9]$' 2>&1 >/dev/null && domain="dn42.uu.org"
   if [ "$domain" == "4830.org" ]; then tunprefix="ffgt-"; fi
   if [ $legacy -eq 0 ]; then
     tunprefix="T"
