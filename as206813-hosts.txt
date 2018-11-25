@@ -6,8 +6,6 @@ gw11
 gw12
 gw13
 s2
-gw02
-gw04
 bgp-ber01
 gw00
 bgp-ham01
@@ -21,3 +19,10 @@ gw05
 gw06
 bgp-fra01
 bgp-ham02
+gw20
+gw21
+gw22
+gw23
+gw30
+gw31
+gw32

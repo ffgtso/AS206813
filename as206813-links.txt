@@ -13,3 +13,17 @@ de3:bgp-fks01 lan
 de5:bgp-fra01 lan
 nl0:bgp-ber01 l2tp-ll
 nl0:bgp-ham02 l2tp-ll
+gw20:gw00 l2tp-eth
+gw21:gw00 l2tp-eth
+gw22:gw00 l2tp-eth
+gw23:gw00 l2tp-eth
+gw30:gw00 l2tp-eth
+gw31:gw00 l2tp-eth
+gw32:gw00 l2tp-eth
+gw20:gw10 l2tp-eth
+gw21:gw10 l2tp-eth
+gw22:gw10 l2tp-eth
+gw23:gw10 l2tp-eth
+gw30:gw10 l2tp-eth
+gw31:gw10 l2tp-eth
+gw32:gw10 l2tp-eth

@@ -21,9 +21,11 @@ if [ "${MYNAME}" = "chimaera" ]; then
   MYNAME="bgp-ham02"
 fi
 if [ "$(printf %.3s ${MYNAME})" == "bgp" ]; then
- (grep ${MYNAME} <as206813-tunnel.txt | grep -v gw) >/tmp/as206813-tunnel.txt
+ (grep ${MYNAME} <as${ASN}-tunnel.txt | grep -v gw) >/tmp/as${ASN}-tunnel.txt
 else
- (grep ${MYNAME} <as206813-tunnel.txt | grep -v bgp) >/tmp/as206813-tunnel.txt
+ (grep ${MYNAME} <as${ASN}-tunnel.txt | grep -v bgp) >/tmp/as${ASN}-tunnel.txt
 fi
-mv /tmp/as206813-tunnel.txt .
+grep ${MYNAME} as${ASN}-links.txt >>/tmp/as${ASN}-tunnel.txt
+sort -u </tmp/as${ASN}-tunnel.txt >as${ASN}-tunnel.txt
+#mv /tmp/as${ASN}-tunnel.txt .
 rm /tmp/tunnel-$$.tmp
