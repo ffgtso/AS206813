@@ -27,10 +27,10 @@ gw23:gw10 l2tp-eth
 gw30:gw10 l2tp-eth
 gw31:gw10 l2tp-eth
 gw32:gw10 l2tp-eth
-gw20:s3 l2tp-ll
-gw21:s3 l2tp-ll
-gw22:s3 l2tp-ll
-gw23:s3 l2tp-ll
-gw30:s3 l2tp-ll
-gw31:s3 l2tp-ll
-gw32:s3 l2tp-ll
+gw20:s3 l2tp-eth
+gw21:s3 l2tp-eth
+gw22:s3 l2tp-eth
+gw23:s3 l2tp-eth
+gw30:s3 l2tp-eth
+gw31:s3 l2tp-eth
+gw32:s3 l2tp-eth
