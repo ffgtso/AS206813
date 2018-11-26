@@ -23,8 +23,7 @@ fi
 if [ "$(printf %.3s ${MYNAME})" = "bgp" ]; then
  (grep ${MYNAME} <as${ASN}-tunnel.txt | grep -v gw) >/tmp/as${ASN}-tunnel.txt
 else
- echo -n ""
-# (grep ${MYNAME} <as${ASN}-tunnel.txt | grep -v bgp) >/tmp/as${ASN}-tunnel.txt
+ (grep ${MYNAME} <as${ASN}-tunnel.txt | grep -v bgp) >/tmp/as${ASN}-tunnel.txt
 fi
 grep ${MYNAME} as${ASN}-links.txt >>/tmp/as${ASN}-tunnel.txt
 sort -u </tmp/as${ASN}-tunnel.txt >as${ASN}-tunnel.txt
