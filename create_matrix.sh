@@ -20,7 +20,7 @@ fi
 if [ "${MYNAME}" = "chimaera" ]; then
   MYNAME="bgp-ham02"
 fi
-if [ "$(printf %.3s ${MYNAME})" == "bgp" ]; then
+if [ "$(printf %.3s ${MYNAME})" = "bgp" ]; then
  (grep ${MYNAME} <as${ASN}-tunnel.txt | grep -v gw) >/tmp/as${ASN}-tunnel.txt
 else
  (grep ${MYNAME} <as${ASN}-tunnel.txt | grep -v bgp) >/tmp/as${ASN}-tunnel.txt
