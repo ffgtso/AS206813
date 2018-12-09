@@ -25,3 +25,5 @@ s/gw23/gw04/g
 s/gw30/gw07/g
 s/gw31/gw08/g
 s/gw32/gw09/g
+s/gw33/gw14/g
+s/gw34/gw15/g

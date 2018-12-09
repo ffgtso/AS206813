@@ -31,6 +31,8 @@ gw20:s3 l2tp-eth
 gw21:s3 l2tp-eth
 gw22:s3 l2tp-eth
 gw23:s3 l2tp-eth
-gw30:s3 l2tp-eth
-gw31:s3 l2tp-eth
-gw32:s3 l2tp-eth
+gw30:bgp-ham02 l2tp-ll
+gw31:bgp-ham02 lan
+gw32:bgp-fra01 lan
+gw33:bgp-ham02 l2tp-ll
+gw34:bgp-ham02 lan
