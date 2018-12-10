@@ -35,8 +35,8 @@ gw23:s3 l2tp-eth
 gw30:bgp-ham02 l2tp-ll
 gw31:bgp-ham02 lan
 gw32:bgp-fra01 lan
-gw33:bgp-ham02 l2tp-ll
-gw34:bgp-ham02 lan
+gw33:bgp-ham02 lan
+gw34:bgp-ham02 l2tp-ll
 gw-event01:bgp-ham02 lan
 gw-event02:bgp-ham02 l2tp-ll
 gw-event01:hopglass l2tp-eth
