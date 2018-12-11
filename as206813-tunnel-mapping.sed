@@ -28,3 +28,4 @@ s/gw32/gw09/g
 s/gw33/gw14/g
 s/gw34/gw15/g
 s/hopglass/s00/g
+s/gw-test01/s15/g

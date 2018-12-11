@@ -42,3 +42,4 @@ gw-event02:bgp-ham02 l2tp-ll
 gw-event01:hopglass l2tp-eth
 gw-event02:hopglass l2tp-eth
 gw-event01:gw-event02 l2tp-eth
+gw-test01:bgp-ham02 lan

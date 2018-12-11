@@ -30,3 +30,4 @@ gw34
 gw-event01
 gw-event02
 hopglass
+gw-test01
