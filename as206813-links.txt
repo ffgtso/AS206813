@@ -46,6 +46,7 @@ l2tp-gut01:hopglass l2tp-eth
 l2tp-gut02:hopglass l2tp-eth
 l2tp-gut02:l2tp-gut01 l2tp-eth
 l2tp-gut01:gw-gut01 l2tp-eth
+l2tp-gut02:gw-gut01 l2tp-eth
 bgp-gut01:bgp-ham02 vxlan
 bgp-gut01:bgp-ber01 vxlan
 bgp-gut01:bgp-fra01 vxlan
