@@ -23,11 +23,6 @@ gw20
 gw21
 gw22
 gw23
-gw30
-gw31
-gw32
-gw34
-gw-event01
-gw-event02
 hopglass
-gw-test01
+l2tp-gut01
+l2tp-gut02

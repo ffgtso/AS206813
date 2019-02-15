@@ -18,14 +18,8 @@ s/de1/xx11/g
 s/de2/xx12/g
 s/nl0/xx13/g
 s/us1/xx14/g
-s/gw20/gw01/g
-s/gw21/gw02/g
-s/gw22/gw03/g
-s/gw23/gw04/g
-s/gw30/gw07/g
-s/gw31/gw08/g
-s/gw32/gw09/g
-s/gw33/gw14/g
-s/gw34/gw15/g
 s/hopglass/s00/g
 s/gw-test01/s15/g
+s/l2tp-gut01/gw01/g
+s/l2tp-gut02/gw02/g
+s/gw-gut01/gw03/g
