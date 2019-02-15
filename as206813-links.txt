@@ -39,7 +39,13 @@ gw-event02:hopglass l2tp-eth
 gw-event01:gw-event02 l2tp-eth
 gw-test01:bgp-ham02 lan
 l2tp-gut01:bgp-gut01 lan
+l2tp-gut01:bgp-gut02 lan
 l2tp-gut02:bgp-gut01 lan
+l2tp-gut02:bgp-gut02 lan
+l2tp-gut01:hopglass l2tp-eth
+l2tp-gut02:hopglass l2tp-eth
+l2tp-gut02:l2tp-gut01 l2tp-eth
+l2tp-gut01:gw-gut01 l2tp-eth
 bgp-gut01:bgp-ham02 vxlan
 bgp-gut01:bgp-ber01 vxlan
 bgp-gut01:bgp-fra01 vxlan
