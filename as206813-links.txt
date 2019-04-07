@@ -53,3 +53,11 @@ bgp-gut01:bgp-fra01 vxlan
 bgp-ber01:bgp-fra01 vxlan
 bgp-ham02:bgp-fra01 vxlan
 bgp-ham02:bgp-ber01 vxlan
+bgp-ham02:bgpowl01 gre
+bgp-ham02:bgpowl02 gre
+bgp-ber01:bgpowl01 gre
+bgp-ber01:bgpowl02 gre
+bgp-ham02:bgpowl03 gre
+bgp-ham02:bgpowl04 gre
+bgp-ber01:bgpowl03 gre
+bgp-ber01:bgpowl04 gre

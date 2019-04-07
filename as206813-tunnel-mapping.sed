@@ -23,3 +23,7 @@ s/gw-test01/s15/g
 s/l2tp-gut01/gw01/g
 s/l2tp-gut02/gw02/g
 s/gw-gut01/gw03/g
+s/bgpowl01/bgp10/g
+s/bgpowl02/bgp11/g
+s/bgpowl03/bgp12/g
+s/bgpowl04/bgp13/g
